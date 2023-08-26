@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Registration Page</title>
+    <style>
+      body {
+        background-color: rgba(241, 241, 241, 0.842);
+        color: #000000;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .navbar-brand {
+        margin-right: 1rem;
+      }
+
+      /* Dark mode styles */
+      body.dark-mode {
+        background-color: #000000;
+        color: #fff;
+      }
+      .navbar {
+        background-color: #bed4ec;
+        color: #000000;
+      }
+
+      .navbar.dark-mode {
+        background-color: #6e7d8f;
+        color: #fff;
+      }
+
+      /* Custom layout styles */
+      .registration-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .registration-form {
+        width: 400px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .registration-form.dark-mode {
+        background-color: #1b1b1b;
+        color: #fff;
+        box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+      }
+
+      /* Remove gap between container and edge of screen */
+      .container-fluid {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <a class="navbar-brand" href="#">
+        <img src="img/Famebook-logo.png" alt="Logo" width="40" height="40" />
+      </a>
+
+      <!-- <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button> -->
+      <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
+        <ul class="navbar-nav d-flex flex-row align-items-center">
+          <a class="me-4 btn btn-primary" href="login.html">Login</a>
+          <button
+                style="background-color: white"
+                class="btn btn-link dark-mode-toggle"
+                onclick="darkModed()"
+              >
+                <i class="fas fa-moon"></i>
+              </button>
+        </ul>
+      <!-- </div> -->
+    </nav>
+
+    <!-- Registration form -->
+    <div class="container-fluid registration-container">
+      <form class="registration-form">
+        <h2 class="mb-4">User Registration</h2>
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            name="username"
+            pattern="^(?![-0-9])[-_a-zA-Z0-9]+$"
+            title="Username must not start with a number and can only contain letters, numbers, hyphens, and underscores."
+            required
+          />
+          <div class="error-message" id="usernameError" style="color: red;background-color: rgb(222, 222, 255);margin-top: 0.5rem;border-radius: 0.5rem;"></div>
+          <!-- Error message container -->
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="profile-pic" class="form-label">Profile Picture</label>
+          <input
+            type="file"
+            class="form-control"
+            id="profile-pic"
+            name="profile-pic"
+            accept="image/*"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+      </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+    <script>
+      // ...
+
+
+
+
+      const darkModeToggle = document.querySelector('.dark-mode-toggle');
+      const body = document.body;
+      const navbar = document.querySelector('.navbar');
+      const registrationForm = document.querySelector('.registration-form');
+
+      registrationForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const profilePicInput = document.getElementById('profile-pic'); // Use the correct ID here
+        const usernameError = document.getElementById('usernameError');
+
+        if (!username || !password || !profilePicInput.files[0]) {
+          alert('Please fill in all fields.');
+          return;
+        }
+
+        const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
+        const usernameExists = existingUsers.some(
+          (user) => user.username === username
+        );
+
+        if (usernameExists) {
+          usernameError.textContent = 'Username already exists.';
+          return;
+        } else if (!/^(?![-0-9])[-_a-zA-Z0-9]+$/.test(username)) {
+          usernameError.textContent = 'Invalid username format.';
+          usernameError.style.padding='0.5rem'
+          return;
+        } else {
+          usernameError.textContent = ''; // Clear error message if username is valid
+          usernameError.style.display='none'
+        }
+
+        const reader = new FileReader();
+        reader.onload = function (event) {
+          const profilePicBase64 = event.target.result;
+
+          // Get existing users from Local Storage or create an empty array
+          let users = JSON.parse(localStorage.getItem('users')) || [];
+
+          // Add the new user to the array
+          users.push({ username, password, profilePic: profilePicBase64 });
+
+          // Store the updated user array back in Local Storage
+          localStorage.setItem('users', JSON.stringify(users));
+
+          alert('User registered successfully!');
+          registrationForm.reset();
+          window.location.href="login.html"
+        };
+
+        // Read the selected image file as a Base64-encoded data URL
+        reader.readAsDataURL(profilePicInput.files[0]);
+      });
+
+
+
+      window.addEventListener('DOMContentLoaded', () => {
+        loadDark();
+      });
+
+      const loadDark = () => {
+        if (
+          localStorage.getItem('darkMode') &&
+          localStorage.getItem('darkMode') == 'true'
+        ) {
+          body.classList.add('dark-mode');
+          navbar.classList.add('dark-mode');
+          registrationForm.classList.add('dark-mode')
+        } else {
+          body.classList.remove('dark-mode');
+          navbar.classList.remove('dark-mode');
+          registrationForm.classList.remove('dark-mode')
+        }
+      };
+
+      const darkModed = () => {
+        saveDark();
+        const postsElm = document.querySelectorAll('.myPost');
+        body.classList.toggle('dark-mode');
+        navbar.classList.toggle('dark-mode');
+        registrationForm.classList.toggle('dark-mode')
+      };
+
+      const saveDark = () => {
+        if (
+          !localStorage.getItem('darkMode') ||
+          localStorage.getItem('darkMode') == 'false'
+        ) {
+          localStorage.setItem('darkMode', 'true');
+        } else {
+          localStorage.setItem('darkMode', 'false');
+        }
+      };
+    </script>
+  </body>
+</html>

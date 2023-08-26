@@ -1,0 +1,36 @@
+{
+    "users": [
+      {
+        "id": 1,
+        "name": "Mahmoud",
+        "email": "mahmoud@example.com",
+        "image": "mahmoud.jpg",
+        "posts": [
+          {
+            "id": 101,
+            "title": "First Post",
+            "content": "This is my first post."
+          },
+          {
+            "id": 102,
+            "title": "Second Post",
+            "content": "A follow-up post."
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Ahmed",
+        "email": "ahmed@example.com",
+        "image": "ahmed.jpg",
+        "posts": [
+          {
+            "id": 201,
+            "title": "Hello World",
+            "content": "My introduction post."
+          }
+        ]
+      }
+    ]
+  }
+  

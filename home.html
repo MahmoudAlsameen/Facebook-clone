@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<script>if(!localStorage.getItem('logged') ||
+  localStorage.getItem('logged') != 'true'){
+window.location.href='login.html'
+
+}</script>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Classic Facebook</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background-color: rgba(241, 241, 241, 0.842);
+        color: #000000;
+      }
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #ffffff;
+        color: #000000;
+      }
+      .navbar-brand {
+        margin-right: 1rem;
+      }
+      /* Dark mode styles */
+      body.dark-mode {
+        background-color: #000000;
+        color: #fff;
+      }
+      .navbar.dark-mode {
+        background-color: #6e7d8f;
+        color: #fff;
+      }
+      .left-part {
+        position: fixed;
+      
+        left: 0;
+        bottom: 100;
+        padding: 1rem;
+        width: 25%; /* Adjust the width as needed */
+        height: 100%;
+        background-color: white;
+      }
+      .right-part {
+        position: fixed;
+
+        right: 0;
+        bottom: 100;
+        padding: 1rem;
+        width: 25%; /* Adjust the width as needed */
+        height: 100%;
+        background-color: white;
+      }
+      .middle-part {
+       
+        margin-left: 25%;
+        margin-right: 25%; 
+        padding: 1rem;
+        /* width:100%;  */
+        background-color: white;
+      }
+     
+      .left-part.dark-mode,
+      .right-part.dark-mode,
+      .middle-part.dark-mode {
+        background-color: #1b1b1b;
+        color: #fff;
+      }
+
+      .right-part a:hover, .left-part h3:hover{
+        cursor: pointer;
+        color: #0546a8;
+        background-color: #969696;
+        border-radius: 0.3rem;
+      }
+      .right-part.dark-mode a,.left-part.dark-mode h3{
+        color: #fff;
+      }
+      .right-part.dark-mode a:hover, .left-part.dark-mode h3:hover{
+        cursor: pointer;
+        color: #949494;
+        background-color: #153970;
+      }
+      /* Custom layout styles */
+      .three-column-layout {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 100px; /* Adjust the padding as needed */
+      }
+
+      #myPost {
+        position: sticky;
+        top: 30px;
+      }
+      
+
+   .big-middle-main{
+     width: 90%;
+     /* width: 120px; */
+      position: relative;
+      top:5rem;
+   }
+ .middle-second{
+
+  width: 100%; 
+  /* no */
+ }
+ .middle-part{
+  width: 100%;
+  /* no */
+ }
+
+
+      .formchange{
+          width: 250px;
+        }
+        .formchange input{
+          width: 190px;
+        }
+        .formchange button ,.formchange input{
+      display: inline-block !important;
+        }
+
+
+      @media screen and (max-width: 987px) {
+        .bigdiv{
+          display: flex;
+          flex-direction: row;
+          width: 90%;
+
+        }
+        .formchange button ,.formchange input{
+      display: inline-block !important;
+        }
+        .formchange{
+          width: 250px;
+        }
+        .formchange input{
+          width: 190px;
+        }
+
+        .left-part{
+          display: none;
+          width: 0;
+        }
+        .right-part{
+          width:25%;
+        }
+       
+        .big-middle-main{
+    /* margin-right:15rem ; */
+    width:80%;
+    margin-left:0 ;
+  
+     
+   }
+ .middle-second{
+  width: 100%; 
+  /* no */
+ }
+ .middle-part{
+  margin: 0;
+
+  /* margin: 0; */
+  /* margin-left: 25%;
+    margin-right: 25%; */
+  width: 100%;
+  /* no */
+ }
+
+
+}
+@media screen and (max-width: 600px) {
+
+  .bigdiv{
+        margin-left: 1rem;
+    width: 65%;
+
+        }
+                .bigdiv a{
+          margin-right: 0;
+        }
+
+
+        .formchange button ,.formchange input{
+      display: inline-block !important;
+        }
+        .formchange{
+          
+          width: 250px;
+        }
+        .formchange input{
+          
+          width: 190px;
+        }
+
+  .left-part{
+          display: none;
+          width: 0;
+        }
+        .right-part{
+          display: none;
+          width: 0;
+        }
+       
+        .big-middle-main{
+    /* margin-right:15rem ; */
+    width:100%;
+   
+  
+     
+   }
+ .middle-second{
+  width: 100%; 
+  /* no */
+ }
+ .middle-part{
+  margin: 0;
+  /* margin-left: 25%;
+    margin-right: 25%; */
+  width: 100%;
+  /* no */
+ }
+.Big-page{
+  width: 100%;
+}
+
+
+}
+
+      
+    </style>
+  </head>
+  <body>
+    
+      <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid bigdiv">
+          <a class="navbar-brand" href="#">
+            <img
+              src="img/Famebook-logo.png"
+              alt="Logo"
+              width="40"
+              height="40"
+            />
+          </a>
+          <form class=" me-1 mb-lg-0 formchange" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button
+              style="
+                background-color: rgba(64, 107, 172, 0.342);
+                border-radius: 20%;
+              "
+              class="btn btn-outline-success"
+              type="submit"
+            >
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </div>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-lg-0">
+            <button onclick="logout()" class="me-4 btn btn-primary">Logout</button>
+            <li class="nav-item me-2">
+              <button
+                style="background-color: white"
+                class="btn btn-link dark-mode-toggle"
+                onclick="darkModed()"
+              >
+                <i class="fas fa-moon"></i>
+              </button>
+            </li>
+            <li
+              style="background-color: white; border-radius: 20%"
+              class="nav-item me-2"
+            >
+              <a class="nav-link" href="#">
+                <i class="fas fa-bars"></i>
+              </a>
+            </li>
+            <li
+              style="background-color: white; border-radius: 20%"
+              class="nav-item me-2"
+            >
+              <a class="nav-link" href="#">
+                <i class="fas fa-comments"></i>
+              </a>
+            </li>
+            <li
+              style="background-color: white; border-radius: 20%"
+              class="nav-item me-2"
+            >
+              <a class="nav-link" href="#">
+                <i class="fas fa-bell"></i>
+              </a>
+            </li>
+           
+          </ul>
+          <a  class="navbar-brand" href="#">
+            <img id="myimg"
+              src=""
+              alt="Profile Photo"
+              width="50"
+              height="50"
+              class="rounded-circle"
+            />
+          </a>
+         
+        </div>
+      </nav>
+    
+
+    <!-- Three-column layout -->
+    <div  class="container big-middle-main">
+    <div class="container middle-second">
+      <div class="d-flex Big-page">
+        <div class="left-part card">
+          <!-- Left part -->
+          <h2>Groups</h2>
+          <div>
+            <div class="btn m-4">
+              <h3>Group 1</h3>
+            </div>
+            <div class="btn m-4">
+              <h3>Group 2</h3>
+            </div>
+            <div class="btn m-4">
+              <h3> Group 3</h3>
+            </div>
+            <div class="btn m-4">
+              <h3> Group 4</h3>
+            </div>
+          </div>
+        </div>
+        <!-- Middle part -->
+        <div class="middle-part card " id="middlePart">
+          <div class="myPost card">
+            <h2 style="padding: 0.5rem">Add new post</h2>
+            <form
+              class="d-flex justify-content-center my-2 my-lg-0"
+              id="myPost"
+              onsubmit="postNew(event,this)"
+              action=""
+            >
+              <input
+                class="form-control me-2 w-100 m-2"
+                type="text"
+                placeholder="What are you thinking of? (Working &check;)"
+              />
+            </form>
+          </div>
+        </div>
+        <div class="right-part card">
+          <!-- Right part -->
+          <h2>Chats</h2>
+          <div>
+            <div class="m-4">
+              
+              <a class="btn" href=""><img src="image/newimg.jpg" alt="" class="rounded-circle me-2" width="40">Ramadan Shaaban</a>
+            </div>
+            <div class="m-4">
+              <a class="btn" href=""><img src="image/newimg.jpg" alt="" class="rounded-circle me-2" width="40">Ramadan Shaaban</a>
+            </div>
+            <div class="m-4">
+              <a class="btn" href=""><img src="image/newimg.jpg" alt="" class="rounded-circle me-2" width="40">Ramadan Shaaban</a>
+            </div>
+            <div class="m-4">
+              <a class="btn" href=""><img src="image/newimg.jpg" alt="" class="rounded-circle me-2" width="40">Ramadan Shaaban</a>
+            </div>
+            <div class="m-4">
+              <a class="btn" href=""><img src="image/newimg.jpg" alt="" class="rounded-circle me-2" width="40">Ramadan Shaaban</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+   
+    <script>
+       const profilePic = document.getElementById('myimg');
+      const darkModeToggle = document.querySelector('.dark-mode-toggle');
+      const body = document.body;
+      const navbar = document.querySelector('.navbar');
+      const leftPart = document.querySelector('.left-part');
+      const rightPart = document.querySelector('.right-part');
+      const middlePart = document.querySelector('.middle-part');
+
+      profilePic.src=localStorage.getItem('loadImage')
+
+
+      async function fetchPosts() {
+        try {
+          const response = await fetch('posts.json');
+          const data = await response.json();
+          return data.posts;
+        } catch (error) {
+          console.error('Error fetching posts:', error);
+          return [];
+        }
+      }
+      async function fetchContacts() {
+        try {
+          const response = await fetch('contacts.json');
+          const data = await response.json();
+          console.log(data.contacts);
+          return data.contacts;
+        } catch (error) {
+          console.error('Error fetching contacts:', error);
+          return [];
+        }
+      }
+
+      // Display posts in the middle part
+      async function displayPosts() {
+        const middlePart = document.getElementById('middlePart');
+        const posts = await fetchPosts();
+
+        if (posts.length === 0) {
+          middlePart.innerHTML += '<p>No posts available.</p>';
+          return;
+        }
+        const contacts = await fetchContacts();
+
+      //   const postsHTML = posts
+      //     .map(
+      //       (post) => `
+      //   <div class="post card" style="margin:0.5rem">
+      //     <img style="width:5rem;height:5rem;border-radius:100%;padding:0.5rem;" src=${contacts[1].profilePicture}>
+      //     <h2 style="padding:0.5rem;">${post.title}</h2>
+      //     <p style="padding:0.5rem;">${post.content}</p>
+      //   </div>
+       
+
+        
+      // `
+      //     )
+      //     .join('');
+
+
+
+
+ const postsHTML = posts
+          .map(
+            (post) => ` <div class="container">
+    <div class="card mt-4 mb-4">
+      <div class="card-header">
+        <img src=${contacts[1].profilePicture} alt="User Profile" class="rounded-circle me-2" width="40">
+        <span class="fw-bold">User</span>
+      </div>
+      <div class="card-body">
+        <p>${post.title}</p>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-link">
+          <i class="bi bi-hand-thumbs-up"></i> Like
+        </button>
+        <button class="btn btn-link">
+          <i class="bi bi-chat"></i> Comment
+        </button>
+        <button class="btn btn-link">
+          <i class="bi bi-share"></i> Share
+        </button>
+      </div>
+      
+      <div class="bg-light">
+        <hr>
+        <div class="card-body">
+          <h5 class="card-title">Comments</h5>
+          <div class="media">
+            <div class="input-group">
+              <div class="d-flex flex-column align-items-center text-center"><img src=${localStorage.getItem('loadImage')} class=" rounded-circle" alt="User Profile" width="40">
+              <h6>${localStorage.getItem('loadUsername')}</h6>
+              </div>
+                <input style="background-color:#f2f2f2;" type="text" class="form-control m-1" placeholder="Write a comment..(Working )">
+                <div class="input-group-append">
+                  <button onClick="addComment(this)" class="btn btn-primary m-1" type="button">Comment</button>
+                </div>
+              </div>
+            
+            <div class="media-body">
+              <p>This is a comment on the post.</p>
+            </div>
+          </div>
+          
+          <!-- Add more comments -->
+          
+          <!-- Comment Input -->
+          
+        </div>
+    </div>
+    
+    <!-- Comments Section -->
+    
+    </div>
+  </div>
+          
+      `
+          )
+          .join('');
+
+          
+
+          
+
+
+
+
+        middlePart.innerHTML += postsHTML;
+      }
+      // async function displayContacts() {
+      //   const profilePic = document.getElementById('myimg');
+      //   const contacts = await fetchContacts();
+
+      //   profilePic.src = contacts[0].profilePicture;
+      // }
+
+      // Load posts when the page is loaded
+      window.addEventListener('DOMContentLoaded', () => {
+        loadDark();
+        displayPosts();
+        displayContacts();
+      });
+
+      // Load more posts when scrolling to the bottom
+      window.addEventListener('scroll', () => {
+        const scrollOffset = middlePart.clientHeight;
+        const scrollBottom = window.innerHeight + window.scrollY;
+
+        if (scrollBottom >= scrollOffset) {
+          displayPosts();
+        }
+      });
+
+      const myPost = document.getElementById('myPost');
+
+      let postNewCounter = 0;
+      let myPostsRaw = fetchPosts();
+      async function postNew(event, elm) {
+        event.preventDefault();
+        const dataUpdated = await myPostsRaw;
+        postNewCounter += 1;
+        dataUpdated.unshift({
+          id: postNewCounter,
+          title: elm.querySelector('input').value,
+          content: `my new post ${postNewCounter}`,
+        });
+        const contacts = await fetchContacts();
+        const postsHTML = dataUpdated
+          .map(
+            (post) =>` <div class="container">
+    <div class="card mt-4 mb-4">
+      <div class="card-header">
+        <img src=${contacts[1].profilePicture} alt="User Profile" class="rounded-circle me-2" width="40">
+        <span class="fw-bold">User</span>
+      </div>
+      <div class="card-body">
+        <p>${post.title}</p>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-link">
+          <i class="bi bi-hand-thumbs-up"></i> Like
+        </button>
+        <button class="btn btn-link">
+          <i class="bi bi-chat"></i> Comment
+        </button>
+        <button class="btn btn-link">
+          <i class="bi bi-share"></i> Share
+        </button>
+      </div>
+      
+      <div class="bg-light">
+        <hr>
+        <div class="card-body">
+          <h5 class="card-title">Comments</h5>
+          <div class="media">
+            <div class="input-group m-3">
+              <div class="d-flex flex-column align-items-center text-center"><img src=${contacts[1].profilePicture} class=" rounded-circle" alt="User Profile" width="40">
+              <h6>Mahmoud</h6>
+            </div>
+                <input style="background-color:#f2f2f2;" type="text" class="form-control m-1" placeholder="Write a comment..(Working )">
+                <div class="input-group-append">
+                  <button onClick="addComment(this)" class="btn btn-primary m-1" type="button">Comment</button>
+                </div>
+              </div>
+            
+            <div class="media-body">
+              <p>This is a comment on the post.</p>
+            </div>
+          </div>
+          
+          <!-- Add more comments -->
+          
+          <!-- Comment Input -->
+          
+        </div>
+    </div>
+    
+    <!-- Comments Section -->
+    
+    </div>
+  </div>
+          
+      `
+          )
+          .join('');
+
+
+
+        middlePart.innerHTML =
+          `    <div class="myPost card">
+      <h2 style="padding: 0.5rem;">Add new post</h2>
+      <form
+        class="d-flex justify-content-center my-2 my-lg-0"
+        id="myPost"
+        onsubmit="postNew(event,this)"
+        action=""
+      >
+        <input
+          class="form-control me-2 w-100 m-2" 
+          type="text"
+          placeholder="What are you thinking of? (Working &check;)"
+        />
+      </form>
+    </div>` + 
+    postsHTML;
+
+        console.log(dataUpdated);
+      }
+
+      const loadDark = () => {
+        if (
+          localStorage.getItem('darkMode') &&
+          localStorage.getItem('darkMode') == 'true'
+        ) {
+          body.classList.add('dark-mode');
+          navbar.classList.add('dark-mode');
+          leftPart.classList.add('dark-mode');
+          rightPart.classList.add('dark-mode');
+          middlePart.classList.add('dark-mode');
+        } else {
+          body.classList.remove('dark-mode');
+          navbar.classList.remove('dark-mode');
+          leftPart.classList.remove('dark-mode');
+          rightPart.classList.remove('dark-mode');
+          middlePart.classList.remove('dark-mode');
+        }
+      };
+
+      const darkModed = () => {
+        saveDark();
+        const postsElm = document.querySelectorAll('.myPost');
+        body.classList.toggle('dark-mode');
+        navbar.classList.toggle('dark-mode');
+        leftPart.classList.toggle('dark-mode');
+        rightPart.classList.toggle('dark-mode');
+        middlePart.classList.toggle('dark-mode');
+      };
+
+      const saveDark = () => {
+        if (
+          !localStorage.getItem('darkMode') ||
+          localStorage.getItem('darkMode') == 'false'
+        ) {
+          localStorage.setItem('darkMode', 'true');
+        } else {
+          localStorage.setItem('darkMode', 'false');
+        }
+      };
+      const commentElement=document.querySelectorAll('.comment-element')
+
+      const addComment=(elm)=>{
+        const newCommentElement=document.createElement('p')
+        
+        const commentValue=elm.parentElement.previousElementSibling.value
+        newCommentElement.textContent=commentValue
+        elm.parentElement.parentElement.nextElementSibling.appendChild(newCommentElement)
+
+
+
+        // elm.parentElement.parentElement.nextElementSibling.querySelector('p').textContent
+
+      }
+      
+
+      const logout=()=>{
+        localStorage.setItem('logged',false)
+        // Reload the current page
+        location.reload()
+      }
+
+  
+    </script>
+  </body>
+</html>
